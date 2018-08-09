@@ -303,20 +303,20 @@ func TestWriteUint32To(t *testing.T) {
 
 		const max = 50
 		for i:=0; i<max; i++ {
-			x64 := randomness.Int63n(0xffff)
+			x64 := randomness.Int63n(0xffffffff)
 
-			x32 := uint32(x64)
+			u32 := uint32(x64)
 
-			var b0 byte = uint8( 0x00ff & x32      )
-			var b1 byte = uint8((0xff00 & x32) >> 8)
-			var b2 byte = uint8((0xff00 & x32) >> 16)
-			var b3 byte = uint8((0xff00 & x32) >> 24)
+			var b0 byte = uint8( 0x000000ff & u32      )
+			var b1 byte = uint8((0x0000ff00 & u32) >> 8)
+			var b2 byte = uint8((0x00ff0000 & u32) >> 16)
+			var b3 byte = uint8((0xff000000 & u32) >> 24)
 
 			test := struct{
 				Value uint32
 				Expected []byte
 			}{
-				Value:           x32,
+				Value:           u32,
 				Expected: []byte{b0, b1, b2, b3},
 			}
 

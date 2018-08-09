@@ -210,15 +210,15 @@ func TestWriteUint8To(t *testing.T) {
 		for i:=0; i<max; i++ {
 			x64 := randomness.Int63n(0xffff)
 
-			x8 := uint8(x64)
+			u8 := uint8(x64)
 
-			var b0 byte = x8
+			var b0 byte = u8
 
 			test := struct{
 				Value uint8
 				Expected []byte
 			}{
-				Value:           x8,
+				Value:           u8,
 				Expected: []byte{b0},
 			}
 

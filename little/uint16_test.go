@@ -273,16 +273,16 @@ func TestWriteUint16To(t *testing.T) {
 		for i:=0; i<max; i++ {
 			x64 := randomness.Int63n(0xffff)
 
-			x16 := uint16(x64)
+			u16 := uint16(x64)
 
-			var b0 byte = uint8( 0x00ff & x16      )
-			var b1 byte = uint8((0xff00 & x16) >> 8)
+			var b0 byte = uint8( 0x00ff & u16      )
+			var b1 byte = uint8((0xff00 & u16) >> 8)
 
 			test := struct{
 				Value uint16
 				Expected []byte
 			}{
-				Value:           x16,
+				Value:           u16,
 				Expected: []byte{b0, b1},
 			}
 
