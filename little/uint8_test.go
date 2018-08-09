@@ -121,6 +121,56 @@ func TestWriteUint8To(t *testing.T) {
 
 		},
 		{
+			Value:           0xf0,
+			Expected: []byte{0xf0},
+
+		},
+		{
+			Value:           0xf1,
+			Expected: []byte{0xf1},
+
+		},
+		{
+			Value:           0xf2,
+			Expected: []byte{0xf2},
+
+		},
+		{
+			Value:           0xf3,
+			Expected: []byte{0xf3},
+
+		},
+		{
+			Value:           0xf4,
+			Expected: []byte{0xf4},
+
+		},
+		{
+			Value:           0xf5,
+			Expected: []byte{0xf5},
+
+		},
+		{
+			Value:           0xf6,
+			Expected: []byte{0xf6},
+
+		},
+		{
+			Value:           0xf7,
+			Expected: []byte{0xf7},
+
+		},
+		{
+			Value:           0xf8,
+			Expected: []byte{0xf8},
+
+		},
+		{
+			Value:           0xf9,
+			Expected: []byte{0xf9},
+
+		},
+		{
 			Value:           0xfa,
 			Expected: []byte{0xfa},
 
