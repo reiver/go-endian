@@ -244,8 +244,8 @@ func TestWriteUint8To(t *testing.T) {
 
 		if expected, actual := test.Expected, buffer.Bytes(); !bytes.Equal(expected, actual) {
 			t.Errorf("For test #%d,....", testNumber)
-			t.Errorf("\tEXPECTED % v", expected)
-			t.Errorf("\tACTUAL % v", actual)
+			t.Errorf("\tEXPECTED: % v", expected)
+			t.Errorf("\tACTUAL:   % v", actual)
 			continue
 		}
 	}
