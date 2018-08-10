@@ -17,14 +17,14 @@ func None() Type {
 }
 
 // Little Endian
-func LittleEndian() Type {
+func Little() Type {
 	return Type{
 		value: 'l',
 	}
 }
 
 // Big Endian
-func BigEndian() Type {
+func Big() Type {
 	return Type{
 		value: 'B',
 	}
@@ -48,9 +48,9 @@ func NativeEndianness() Type {
 
 	switch {
 	case 0x01 == *(*uint8)(ptr):
-		return BigEndian()
+		return Big()
 	case 0x00 == *(*uint8)(ptr):
-		return LittleEndian()
+		return Little()
 	default:
 		return Unknown()
 	}
