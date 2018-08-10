@@ -58,6 +58,7 @@ func Unknown() Type {
 	}
 }
 
+// NativeEndianness will figure out the native endianness of the computer system it is run on, and return that.
 func NativeEndianness() Type {
 
 	var i uint16 = 0x0100
