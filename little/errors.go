@@ -5,6 +5,7 @@ import (
 )
 
 var (
-	errNilReader = errors.New("Nil Reader")
-	errNilWriter = errors.New("Nil Writer")
+	errInternalError = errors.New("Internal Error")
+	errNilReader     = errors.New("Nil Reader")
+	errNilWriter     = errors.New("Nil Writer")
 )
