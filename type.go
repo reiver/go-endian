@@ -5,6 +5,23 @@ import (
 )
 
 // Type represents an endianness.
+//
+// Example Usage
+//
+//	var endianness endian.Type
+//	
+//	endianness = endian.NativeEndianness()
+//	
+//	switch endianness {
+//	case endian.Little():
+//		//@TODO
+//	case endian.Big():
+//		//@TODO
+//	case endian.Unknown():
+//		//@TODO
+//	default:
+//		//@TODO
+//	}
 type Type struct {
 	value uint8
 }
