@@ -1,6 +1,8 @@
-package littleendian
+package littleendian_test
 
 import (
+	"github.com/reiver/go-endian/little"
+
 	"bytes"
 	"math/rand"
 	"time"
@@ -345,7 +347,7 @@ func TestWriteUint64To(t *testing.T) {
 
 		var buffer bytes.Buffer
 
-		n64, err := WriteUint64To(&buffer, test.Value)
+		n64, err := littleendian.WriteUint64To(&buffer, test.Value)
 		if nil != err {
 			t.Errorf("For test #%d, did not expect an error, but actually go one: (%T) %q", testNumber, err, err)
 			continue
