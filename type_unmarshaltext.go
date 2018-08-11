@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// UnarshalText makes endian.Type fit the encoding.TextUnmarshaler, and thus automatically makes it work with things such has the "encoding/json" package.
 func (receiver *Type) UnmarshalText(text []byte) error {
 	if nil == receiver {
 		return errNilReceiver
