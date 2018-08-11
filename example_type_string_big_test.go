@@ -13,9 +13,9 @@ func ExampleType_String_big() {
 	s := endianness.String()
 
 	fmt.Printf("%s\n", s)
-	fmt.Printf("endianness = %s\n", endianness) // <---- implicitly calls String method.
+	fmt.Printf("endianness: %s\n", endianness) // <---- implicitly calls String method.
 
 	// Output:
-	// endian.Big()
-	// endianness = endian.Big()
+	// big-endian
+	// endianness: big-endian
 }

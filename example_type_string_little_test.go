@@ -13,9 +13,9 @@ func ExampleType_String_little() {
 	s := endianness.String()
 
 	fmt.Printf("%s\n", s)
-	fmt.Printf("endianness = %s\n", endianness) // <---- implicitly calls String method.
+	fmt.Printf("endianness: %s\n", endianness) // <---- implicitly calls String method.
 
 	// Output:
-	// endian.Little()
-	// endianness = endian.Little()
+	// little-endian
+	// endianness: little-endian
 }

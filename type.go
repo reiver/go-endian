@@ -26,19 +26,6 @@ type Type struct {
 	value uint8
 }
 
-func (receiver Type) String() string {
-	switch receiver.value {
-	case 'l':
-		return "endian.Little()"
-	case 'B':
-		return "endian.Big()"
-	case '?':
-		return "endian.Unknown()"
-	default:
-		return "endian.None()"
-	}
-}
-
 // None Endianness.
 //
 // I.e., a variable of type endian.Type has not been assigned a value yet.
