@@ -4,7 +4,7 @@ import (
 	"io"
 )
 
-// WriteUint32To writes the little endian representation of ‘value’ into ‘writer’.
+// WriteUint32To writes the big endian representation of ‘value’ into ‘writer’.
 func WriteUint32To(writer io.Writer, value uint32) (int64, error) {
 	if nil == writer {
 		return 0, errNilWriter
