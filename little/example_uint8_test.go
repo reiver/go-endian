@@ -26,3 +26,24 @@ func ExampleWriteUint8To() {
 	// Wrote 1 bytes.
 	// Bytes: 10
 }
+
+func ExampleReadUint8From() {
+
+	var buffer bytes.Buffer
+	buffer.Write([]byte{0x10})
+
+	var value uint8
+
+	n64, err := littleendian.ReadUint8From(&buffer, &value)
+	if nil != err {
+		fmt.Printf("Problem writing: %s", err)
+		return
+	}
+
+	fmt.Printf("Read %d bytes.\n", n64)
+	fmt.Printf("Value: 0x%x\n", value)
+
+	// Output:
+	// Read 1 bytes.
+	// Value: 0x10
+}
