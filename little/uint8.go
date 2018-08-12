@@ -19,3 +19,31 @@ func WriteUint8To(writer io.Writer, value uint8) (int64, error) {
 
 	return n64, err
 }
+
+// ReadUint8From reads the little endian representation of ‘value’ from ‘reader’.
+func ReadUint8From(reader io.Reader, value *uint8) (int64, error) {
+	if nil == reader {
+		return 0, errNilReader
+	}
+	if nil == value {
+		return 0, errNilDestination
+	}
+
+	const length = 8/8
+
+	var b [length]byte
+
+	n, err := reader.Read(b[:])
+	n64 := int64(n)
+
+	if nil != err {
+		return n64, err
+	}
+	if length  > n {
+		return n64, errShortRead
+	}
+
+	*value = b[0]
+
+	return n64, nil
+}
