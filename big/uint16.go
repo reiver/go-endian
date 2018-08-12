@@ -30,13 +30,18 @@ func ReadUint16From(reader io.Reader, value *uint16) (int64, error) {
 		return 0, errNilDestination
 	}
 
-	var b [2]byte
+	const length = 16/8
+
+	var b [length]byte
 
 	n, err := reader.Read(b[:])
 	n64 := int64(n)
 
 	if nil != err {
 		return n64, err
+	}
+	if length  > n {
+		return n64, errShortRead
 	}
 
 	*value = (uint16(b[0]) << 8) | uint16(b[1])

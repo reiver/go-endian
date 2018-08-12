@@ -29,13 +29,18 @@ func ReadUint8From(reader io.Reader, value *uint8) (int64, error) {
 		return 0, errNilDestination
 	}
 
-	var b [1]byte
+	const length = 8/8
+
+	var b [length]byte
 
 	n, err := reader.Read(b[:])
 	n64 := int64(n)
 
 	if nil != err {
 		return n64, err
+	}
+	if length  > n {
+		return n64, errShortRead
 	}
 
 	*value = b[0]
