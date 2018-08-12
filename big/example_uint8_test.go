@@ -41,9 +41,9 @@ func ExampleReadUint8From() {
 	}
 
 	fmt.Printf("Read %d bytes.\n", n64)
-	fmt.Printf("Value: % x\n", value)
+	fmt.Printf("Value: 0x%x\n", value)
 
 	// Output:
 	// Read 1 bytes.
-	// Value:  10
+	// Value: 0x10
 }
