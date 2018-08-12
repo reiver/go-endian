@@ -536,7 +536,7 @@ func TestReadUint32From(t *testing.T) {
 
 		const max = 50
 		for i:=0; i<max; i++ {
-			x64 := randomness.Int63n(0xffff)
+			x64 := randomness.Int63n(0xffffffff)
 
 			u32 := uint32(x64)
 
