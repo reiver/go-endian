@@ -22,3 +22,29 @@ func WriteUint32To(writer io.Writer, value uint32) (int64, error) {
 
 	return n64, err
 }
+
+// ReadUint32From reads the native endian representation of ‘value’ from ‘reader’.
+func ReadUint32From(reader io.Reader, value *uint32) (int64, error) {
+	if nil == reader {
+		return 0, errNilReader
+	}
+	if nil == value {
+		return 0, errNilDestination
+	}
+
+	const length = 32/8
+
+	var p []byte = ((*[length]byte)(unsafe.Pointer(value)))[:]
+
+	n, err := reader.Read(p)
+	n64 := int64(n)
+
+	if nil != err {
+		return n64, err
+	}
+	if length  > n {
+		return n64, errShortRead
+	}
+
+	return n64, nil
+}
