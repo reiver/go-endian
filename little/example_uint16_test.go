@@ -26,3 +26,24 @@ func ExampleWriteUint16To() {
 	// Wrote 2 bytes.
 	// Bytes: 10 32
 }
+
+func ExampleReadUint16From() {
+
+	var buffer bytes.Buffer
+	buffer.Write([]byte{0x10,0x32})
+
+	var value uint16
+
+	n64, err := littleendian.ReadUint16From(&buffer, &value)
+	if nil != err {
+		fmt.Printf("Problem writing: %s", err)
+		return
+	}
+
+	fmt.Printf("Read %d bytes.\n", n64)
+	fmt.Printf("Value: 0x%x\n", value)
+
+	// Output:
+	// Read 2 bytes.
+	// Value: 0x3210
+}
