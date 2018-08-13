@@ -505,3 +505,493 @@ func TestWriteUint16To(t *testing.T) {
 		}
 	}
 }
+
+func TestReadUint16From(t *testing.T) {
+
+	var tests []struct{
+		Value []byte
+		Expected uint16
+	}
+
+	var endianness endian.Type = endian.NativeEndianness()
+
+
+	switch endianness {
+	default:
+		panic(endianness)
+	case endian.Little():
+		tests = append(tests, []struct{
+			Value[]byte
+			Expected uint16
+		}{
+			{
+				Value: []byte{0x00,0x00},
+				Expected:   0x0000,
+			},
+			{
+				Value: []byte{0x01,0x00},
+				Expected:   0x0001,
+			},
+			{
+				Value: []byte{0x02,0x00},
+				Expected:   0x0002,
+			},
+			{
+				Value: []byte{0x03,0x00},
+				Expected:   0x0003,
+			},
+			{
+				Value: []byte{0x04,0x00},
+				Expected:   0x0004,
+			},
+			{
+				Value: []byte{0x05,0x00},
+				Expected:   0x0005,
+			},
+			{
+				Value: []byte{0x06,0x00},
+				Expected:   0x0006,
+			},
+			{
+				Value: []byte{0x07,0x00},
+				Expected:   0x0007,
+			},
+			{
+				Value: []byte{0x08,0x00},
+				Expected:   0x0008,
+			},
+			{
+				Value: []byte{0x09,0x00},
+				Expected:   0x0009,
+			},
+			{
+				Value: []byte{0x0a,0x00},
+				Expected:   0x000a,
+			},
+			{
+				Value: []byte{0x0b,0x00},
+				Expected:   0x000b,
+			},
+			{
+				Value: []byte{0x0c,0x00},
+				Expected:   0x000c,
+			},
+			{
+				Value: []byte{0x0d,0x00},
+				Expected:   0x000d,
+			},
+			{
+				Value: []byte{0x0e,0x00},
+				Expected:   0x000e,
+			},
+			{
+				Value: []byte{0x0f,0x00},
+				Expected:   0x000f,
+			},
+			{
+				Value: []byte{0x10,0x00},
+				Expected:   0x0010,
+			},
+			{
+				Value: []byte{0x11,0x00},
+				Expected:   0x0011,
+			},
+			{
+				Value: []byte{0x12,0x00},
+				Expected:   0x0012,
+			},
+			{
+				Value: []byte{0x13,0x00},
+				Expected:   0x0013,
+			},
+
+			{
+				Value: []byte{0xef,0x00},
+				Expected:   0x00ef,
+			},
+			{
+				Value: []byte{0xf0,0x00},
+				Expected:   0x00f0,
+			},
+			{
+				Value: []byte{0xf1,0x00},
+				Expected:   0x00f1,
+			},
+			{
+				Value: []byte{0xf2,0x00},
+				Expected:   0x00f2,
+			},
+			{
+				Value: []byte{0xf3,0x00},
+				Expected:   0x00f3,
+			},
+			{
+				Value: []byte{0xf4,0x00},
+				Expected:   0x00f4,
+			},
+			{
+				Value: []byte{0xf5,0x00},
+				Expected:   0x00f5,
+			},
+			{
+				Value: []byte{0xf6,0x00},
+				Expected:   0x00f6,
+			},
+			{
+				Value: []byte{0xf7,0x00},
+				Expected:   0x00f7,
+			},
+			{
+				Value: []byte{0xf8,0x00},
+				Expected:   0x00f8,
+			},
+			{
+				Value: []byte{0xf9,0x00},
+				Expected:   0x00f9,
+			},
+			{
+				Value: []byte{0xfa,0x00},
+				Expected:   0x00fa,
+			},
+			{
+				Value: []byte{0xfb,0x00},
+				Expected:   0x00fb,
+			},
+			{
+				Value: []byte{0xfc,0x00},
+				Expected:   0x00fc,
+			},
+			{
+				Value: []byte{0xfd,0x00},
+				Expected:   0x00fd,
+			},
+			{
+				Value: []byte{0xfe,0x00},
+				Expected:   0x00fe,
+			},
+			{
+				Value: []byte{0xff,0x00},
+				Expected:   0x00ff,
+			},
+			{
+				Value: []byte{0x00,0x01},
+				Expected:   0x0100,
+			},
+			{
+				Value: []byte{0x01,0x01},
+				Expected:   0x0101,
+			},
+			{
+				Value: []byte{0x02,0x01},
+				Expected:   0x0102,
+			},
+			{
+				Value: []byte{0x03,0x01},
+				Expected:   0x0103,
+			},
+
+			{
+				Value: []byte{0x45,0x02},
+				Expected:   0x0245,
+			},
+
+			{
+				Value: []byte{0xae,0x37},
+				Expected:   0x37ae,
+			},
+
+			{
+				Value: []byte{0xfa,0xff},
+				Expected:   0xfffa,
+			},
+			{
+				Value: []byte{0xfb,0xff},
+				Expected:   0xfffb,
+			},
+			{
+				Value: []byte{0xfc,0xff},
+				Expected:   0xfffc,
+			},
+			{
+				Value: []byte{0xfd,0xff},
+				Expected:   0xfffd,
+			},
+			{
+				Value: []byte{0xfe,0xff},
+				Expected:   0xfffe,
+			},
+			{
+				Value: []byte{0xff,0xff},
+				Expected:   0xffff,
+			},
+		}...)
+	case endian.Big():
+		tests = append(tests, []struct{
+			Value[]byte
+			Expected uint16
+		}{
+			{
+				Value: []byte{0x00,0x00},
+				Expected:        0x0000,
+			},
+			{
+				Value: []byte{0x00,0x01},
+				Expected:        0x0001,
+			},
+			{
+				Value: []byte{0x00,0x02},
+				Expected:        0x0002,
+			},
+			{
+				Value: []byte{0x00,0x03},
+				Expected:        0x0003,
+			},
+			{
+				Value: []byte{0x00,0x04},
+				Expected:        0x0004,
+			},
+			{
+				Value: []byte{0x00,0x05},
+				Expected:        0x0005,
+			},
+			{
+				Value: []byte{0x00,0x06},
+				Expected:        0x0006,
+			},
+			{
+				Value: []byte{0x00,0x07},
+				Expected:        0x0007,
+			},
+			{
+				Value: []byte{0x00,0x08},
+				Expected:        0x0008,
+			},
+			{
+				Value: []byte{0x00,0x09},
+				Expected:        0x0009,
+			},
+			{
+				Value: []byte{0x00,0x0a},
+				Expected:        0x000a,
+			},
+			{
+				Value: []byte{0x00,0x0b},
+				Expected:        0x000b,
+			},
+			{
+				Value: []byte{0x00,0x0c},
+				Expected:        0x000c,
+			},
+			{
+				Value: []byte{0x00,0x0d},
+				Expected:        0x000d,
+			},
+			{
+				Value: []byte{0x00,0x0e},
+				Expected:        0x000e,
+			},
+			{
+				Value: []byte{0x00,0x0f},
+				Expected:        0x000f,
+			},
+			{
+				Value: []byte{0x00,0x10},
+				Expected:        0x0010,
+			},
+			{
+				Value: []byte{0x00,0x11},
+				Expected:        0x0011,
+			},
+			{
+				Value: []byte{0x00,0x12},
+				Expected:        0x0012,
+			},
+			{
+				Value: []byte{0x00,0x13},
+				Expected:        0x0013,
+			},
+
+			{
+				Value: []byte{0x00,0xef},
+				Expected:        0x00ef,
+			},
+			{
+				Value: []byte{0x00,0xf0},
+				Expected:        0x00f0,
+			},
+			{
+				Value: []byte{0x00,0xf1},
+				Expected:        0x00f1,
+			},
+			{
+				Value: []byte{0x00,0xf2},
+				Expected:        0x00f2,
+			},
+			{
+				Value: []byte{0x00,0xf3},
+				Expected:        0x00f3,
+			},
+			{
+				Value: []byte{0x00,0xf4},
+				Expected:        0x00f4,
+			},
+			{
+				Value: []byte{0x00,0xf5},
+				Expected:        0x00f5,
+			},
+			{
+				Value: []byte{0x00,0xf6},
+				Expected:        0x00f6,
+			},
+			{
+				Value: []byte{0x00,0xf7},
+				Expected:        0x00f7,
+			},
+			{
+				Value: []byte{0x00,0xf8},
+				Expected:        0x00f8,
+			},
+			{
+				Value: []byte{0x00,0xf9},
+				Expected:        0x00f9,
+			},
+			{
+				Value: []byte{0x00,0xfa},
+				Expected:        0x00fa,
+			},
+			{
+				Value: []byte{0x00,0xfb},
+				Expected:        0x00fb,
+			},
+			{
+				Value: []byte{0x00,0xfc},
+				Expected:        0x00fc,
+			},
+			{
+				Value: []byte{0x00,0xfd},
+				Expected:        0x00fd,
+			},
+			{
+				Value: []byte{0x00,0xfe},
+				Expected:        0x00fe,
+			},
+			{
+				Value: []byte{0x00,0xff},
+				Expected:        0x00ff,
+			},
+			{
+				Value: []byte{0x01,0x00},
+				Expected:        0x0100,
+			},
+			{
+				Value: []byte{0x01,0x01},
+				Expected:        0x0101,
+			},
+			{
+				Value: []byte{0x01,0x02},
+				Expected:        0x0102,
+			},
+			{
+				Value: []byte{0x01,0x03},
+				Expected:        0x0103,
+			},
+
+			{
+				Value: []byte{0x02,0x45},
+				Expected:        0x0245,
+			},
+
+			{
+				Value: []byte{0x37,0xae},
+				Expected:        0x37ae,
+			},
+
+			{
+				Value: []byte{0xff,0xfa},
+				Expected:        0xfffa,
+			},
+			{
+				Value: []byte{0xff,0xfb},
+				Expected:        0xfffb,
+			},
+			{
+				Value: []byte{0xff,0xfc},
+				Expected:        0xfffc,
+			},
+			{
+				Value: []byte{0xff,0xfd},
+				Expected:        0xfffd,
+			},
+			{
+				Value: []byte{0xff,0xfe},
+				Expected:        0xfffe,
+			},
+			{
+				Value: []byte{0xff,0xff},
+				Expected:        0xffff,
+			},
+		}...)
+	}
+
+
+	{
+		randomness := rand.New(rand.NewSource( time.Now().UTC().UnixNano() ))
+
+		const max = 50
+		for i:=0; i<max; i++ {
+			x64 := randomness.Int63n(0xffff)
+
+			u16 := uint16(x64)
+
+			var b0 byte
+			var b1 byte
+
+			switch endianness {
+			default:
+				panic(endianness)
+			case endian.Little():
+				b0 = uint8( 0x00ff & u16      )
+				b1 = uint8((0xff00 & u16) >> 8)
+			case endian.Big():
+				b0 = uint8((0xff00 & u16) >> 8)
+				b1 = uint8( 0x00ff & u16      )
+			}
+
+			test := struct{
+				Value []byte
+				Expected uint16
+			}{
+				Value: []byte{b0,b1},
+				Expected:     u16,
+			}
+
+			tests = append(tests, test)
+		}
+	}
+
+
+	for testNumber, test := range tests {
+
+		var buffer bytes.Buffer
+
+		buffer.Write(test.Value)
+
+		var actual uint16
+
+		n64, err := nativeendian.ReadUint16From(&buffer, &actual)
+		if nil != err {
+			t.Errorf("For test #%d, did not expect an error, but actually go one: (%T) %q", testNumber, err, err)
+			continue
+		}
+
+		if expected, actual := int64(len(test.Value)), n64; expected != actual {
+			t.Errorf("For test #%d, expected %d, but actually got %d.", testNumber, expected, actual)
+			continue
+		}
+
+		if expected := test.Expected; expected != actual {
+			t.Errorf("For test #%d, expected 0x%X, but actually got 0x%X.", testNumber, expected, actual)
+			continue
+		}
+	}
+}
