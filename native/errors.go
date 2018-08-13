@@ -5,5 +5,8 @@ import (
 )
 
 var (
-	errNilWriter  = errors.New("Nil Writer")
+	errNilDestination = errors.New("Nil Destination")
+	errNilReader      = errors.New("Nil Reader")
+	errNilWriter      = errors.New("Nil Writer")
+	errShortRead      = errors.New("Short Read")
 )
