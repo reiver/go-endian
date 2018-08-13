@@ -194,7 +194,7 @@ func TestWriteUint32To(t *testing.T) {
 
 		{
 			Value:                    0x0000fffa,
-			Expected: []byte{0x00,0x00,0x0ff,0xfa},
+			Expected: []byte{0x00,0x00,0xff,0xfa},
 		},
 		{
 			Value:                    0x0000fffb,
@@ -479,7 +479,7 @@ func TestReadUint32From(t *testing.T) {
 		},
 
 		{
-			Value: []byte{0x00,0x00,0x0ff,0xfa},
+			Value: []byte{0x00,0x00,0xff,0xfa},
 			Expected:              0x0000fffa,
 		},
 		{
